@@ -1,14 +1,28 @@
-import { StyleSheet, Text, View, SafeAreaView, Button, FlatList} from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, SafeAreaView, Button, FlatList, Switch} from 'react-native'
+import React, { useState } from 'react'
 import AppContext from '../AppContext'
 
 const Home = ({navigation}) => {
-    const context = React.useContext(AppContext);
+  const context = React.useContext(AppContext);
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   return (
     <SafeAreaView style={styles.screen}>
-      <View style={styles.inputContainer}>
-        <Button title="Add" onPress={() => {navigation.navigate("Add")}} />
-      </View>
+        <View style={styles.toggle}>
+            <View style={styles.inputContainer}>
+                <Button title="Add Task" onPress={() => {navigation.navigate("Add")}} />
+            </View>
+            <View style={styles.container}>
+                <Text style={styles.completed}>Show Completed</Text>
+                <Switch
+                    trackColor={{false: '#767577', true: '#81b0ff'}}
+                    thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+                    ios_backgroundColor="#3e3e3e"
+                    onValueChange={toggleSwitch}
+                    value={isEnabled}
+                />
+            </View>
+        </View>
       <FlatList
         data={context.tasks}
         renderItem={({ item }) => (
@@ -46,4 +60,15 @@ const styles = StyleSheet.create({
     taskItem: {
         color:"black"
     },
+    toggle: {
+        padding:10,
+        flexDirection:"row",
+        alignItems:"center",
+        justifyContent:"space-between",
+      },
+    completed: {
+        marginLeft:10,
+        fontSize:20,
+        fontWeight:"bold",
+    }
 });
