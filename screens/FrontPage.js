@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, Button, FlatList, Switch} from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, Button, FlatList, Switch, Pressable} from 'react-native'
 import React, { useState } from 'react'
 import AppContext from '../AppContext'
 
@@ -10,7 +10,10 @@ const Home = ({navigation}) => {
     <SafeAreaView style={styles.screen}>
         <View style={styles.toggle}>
             <View style={styles.inputContainer}>
-                <Button title="Add Task" onPress={() => {navigation.navigate("Add")}} />
+                <Pressable style={styles.addTaskButton} onPress={() => {navigation.navigate("Add")}}>
+                    <Text>Add Task</Text>
+                </Pressable>
+                {/* <Button title="Add Task" onPress={() => {navigation.navigate("Add")}} /> */}
             </View>
             <View style={styles.container}>
                 <Text style={styles.completed}>Show Completed</Text>
@@ -68,7 +71,29 @@ const styles = StyleSheet.create({
       },
     completed: {
         marginLeft:10,
-        fontSize:20,
+        fontSize:13,
         fontWeight:"bold",
-    }
+        alignItems:"center",
+        padding:10
+    },
+    container: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection:"row"
+      },
+      addTaskButton: {
+        backgroundColor: "#81b0ff",
+        padding:10,
+        marginLeft: "auto",
+        marginRight: "auto",
+        width: 150,
+        borderRadius: 25,
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "row",
+        alignItems: "center",
+        marginVertical:10,
+        borderColor: "#C0C0C0",
+        borderWidth: 0.8
+      }
 });
