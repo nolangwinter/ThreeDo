@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, SafeAreaView, Button, FlatList, Switch, Pressable} from 'react-native'
 import React, { useState } from 'react'
 import AppContext from '../AppContext'
+import TaskDisplay from '../components/TaskDisplay';
 
 const Home = ({navigation}) => {
   const context = React.useContext(AppContext);
@@ -29,10 +30,11 @@ const Home = ({navigation}) => {
       <FlatList
         data={context.tasks}
         renderItem={({ item }) => (
-            <View style={styles.listItem}>
-                <Text style={styles.taskItem}>{item.value}</Text>
-                <Button title="X" onPress={() => context.removeTask(item.id)} />
-            </View>
+            <TaskDisplay task={ item }/>
+           // <View style={styles.listItem}>
+            //     <Text style={styles.taskItem}>{item.value}</Text>
+            //     <Button title="X" onPress={() => context.removeTask(item.id)} />
+            // </View>
         )}
         keyExtractor={(item) => item.id}
     />
