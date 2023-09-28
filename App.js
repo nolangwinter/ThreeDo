@@ -11,17 +11,25 @@ import 'react-native-gesture-handler';
 const Stack = createStackNavigator();
 const App = () => {
   const [tasks, setTasks] = useState([]);
+  const [task, setTask] = useState('');
+  const [duration, setDuration] = useState(0);
+
   const addTask = (newTask) => {
-    console.log("adding ",newTask)
+    setTasks([...tasks, { id: Date.now().toString(), value:task , duration:duration }]);
+    setTask('');
   };
+
   const removeTask = (taskId) => {
-  console.log("removing ",taskId);
+    setTasks(tasks.filter((t) => t.id !== taskId))
   };
+
   const contextValue = {
     tasks,
     addTask,
-    removeTask
+    removeTask,
+    setTask,
   };
+
   return (
     <AppContext.Provider value={contextValue}>
       <NavigationContainer>

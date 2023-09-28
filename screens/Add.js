@@ -1,19 +1,28 @@
 import { StyleSheet, Text, View, SafeAreaView, Button, Pressable } from 'react-native'
-import React from 'react'
+import React, {useContext} from 'react'
 import AppContext from '../AppContext'
 import { TextInput } from 'react-native-gesture-handler';
 
 const Add = ({navigation}) => {
-    const context = React.useContext(AppContext);
+    const context = useContext(AppContext);
   return (
     <View>
       <Text style={styles.label}>Add Task</Text>
-      <TextInput
-            placeholder={(context.tasks.length == 0) ? "Add your first task" : "Add another task"}
-            style={styles.input}
-            onChangeText={context.setTask}
-            value={context.tasks}/>
-      <Pressable style={styles.button} onPress={() => {context.addTask('foo'); navigation.goBack()}}>
+      <View style={{flexDirection:"row"}}>
+        <TextInput
+              placeholder={(context.tasks.length == 0) ? "Add your first task" : "Add another task"}
+              style={styles.input}
+              onChangeText={context.setTask}
+              value={context.task}
+        />
+        <TextInput
+          placeholder="Enter Duration"
+          style={styles.durInput}
+          
+        />
+
+      </View>
+      <Pressable style={styles.button} onPress={() => {context.addTask(context.task); navigation.goBack()}}>
         <Text style={styles.buttonText}>Add</Text>
       </Pressable>
       {/* <Button title="Cancel" onPress={() => {navigation.goBack()}}/> */}
@@ -42,13 +51,21 @@ const styles = StyleSheet.create({
 
     },
     input: {
-        width:"100%",
+        width:"70%",
         borderColor: 'black',
         borderWidth: 1,
         padding: 20,
-        fontSize:20,
+        fontSize:16,
         marginBottom:10,
-      },
+    },
+    durInput: {
+      width:"100%",
+      borderColor:"black",
+      borderWidth:1,
+      padding:10,
+      fontSize:16,
+      marginBottom:10
+    },
     button: {
       backgroundColor: "#81b0ff",
       padding:10,
