@@ -7,6 +7,7 @@ import Home from './screens/FrontPage';
 import Add from './screens/Add';
 import { NavigationContainer } from '@react-navigation/native';
 import 'react-native-gesture-handler';
+import TaskScreen from './screens/TaskScreen';
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -15,7 +16,7 @@ const App = () => {
   const [duration, setDuration] = useState(0);
 
   const addTask = (newTask) => {
-    setTasks([...tasks, { id: Date.now().toString(), value:task , duration:duration }]);
+    setTasks([...tasks, { id: Date.now().toString(), value:task , dur:duration }]);
     setTask('');
   };
 
@@ -28,6 +29,7 @@ const App = () => {
     addTask,
     removeTask,
     setTask,
+    setDuration,
   };
 
   return (
@@ -36,6 +38,7 @@ const App = () => {
         <Stack.Navigator initialRouteName='Home'>
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Add" component={Add}/>
+          <Stack.Screen name="Task" component={TaskScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </AppContext.Provider>

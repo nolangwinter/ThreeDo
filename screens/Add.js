@@ -18,18 +18,17 @@ const Add = ({navigation}) => {
         <TextInput
           placeholder="Enter Duration"
           style={styles.durInput}
-          
+          onChangeText={context.setDuration}
+          value={context.duration}
         />
 
       </View>
       <Pressable style={styles.button} onPress={() => {context.addTask(context.task); navigation.goBack()}}>
         <Text style={styles.buttonText}>Add</Text>
       </Pressable>
-      {/* <Button title="Cancel" onPress={() => {navigation.goBack()}}/> */}
       <Pressable style={styles.button} onPress={() => {navigation.goBack()}}>
         <Text style={styles.buttonText}>Cancel</Text>
       </Pressable>
-      {/* <Button title='Add' onPress={() => {context.addTask('foo'); navigation.goBack()}}/> */}
     </View>
   )
 }

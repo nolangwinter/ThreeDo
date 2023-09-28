@@ -1,15 +1,17 @@
-import { StyleSheet, Text, View, Button } from 'react-native'
+import { StyleSheet, Text, View, Button, Pressable } from 'react-native'
 import React, { useContext } from 'react'
 import AppContext from '../AppContext'
 
 
-const TaskDisplay = ({ task }) => {
+const TaskDisplay = ({ task, navigation }) => {
     const context = useContext(AppContext);
     return (
         <View style={styles.listItem}>
             <Text style={styles.taskVal}>{task.value}</Text>
+            <Text style={styles.taskVal}>{task.dur}</Text>
             <Button title="X" onPress={() => context.removeTask(task.id)} />
         </View>
+
     )
 }
 

@@ -30,11 +30,9 @@ const Home = ({navigation}) => {
       <FlatList
         data={context.tasks}
         renderItem={({ item }) => (
-            <TaskDisplay task={ item }/>
-           // <View style={styles.listItem}>
-            //     <Text style={styles.taskItem}>{item.value}</Text>
-            //     <Button title="X" onPress={() => context.removeTask(item.id)} />
-            // </View>
+            <Pressable onPress={() => { (navigation.navigate("Task", {item: item} ))}}>
+                <TaskDisplay task={ item }/>
+            </Pressable>
         )}
         keyExtractor={(item) => item.id}
     />
