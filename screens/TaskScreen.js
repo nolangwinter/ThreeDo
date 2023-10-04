@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, Pressable } from 'react-native'
 import React from 'react'
 
 const TaskScreen = ({route, navigation}) => {
@@ -7,7 +7,24 @@ const TaskScreen = ({route, navigation}) => {
   return (
     <SafeAreaView>
       <View style={{alignItems:"center"}}>
-        <Text style={styles.taskTitle}>{item.value}</Text>
+        <Text style={styles.taskTitle}>{item.item.value}</Text>
+        <Text style={styles.taskTitle}>Duration: {item.item.dur}</Text>
+        <Text>Date Added: {item.item.date_added}</Text>
+      </View>
+
+      <View style={{height:200}}/>
+
+      <View style={styles.buttonView}>
+        <Pressable style={styles.completedButton}>
+          <Text style={styles.buttonText}>
+            Completed
+          </Text>
+        </Pressable>
+        <Pressable style={styles.editButton}>
+          <Text style={styles.buttonText}>
+            Edit
+          </Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   )
@@ -16,9 +33,38 @@ const TaskScreen = ({route, navigation}) => {
 export default TaskScreen
 
 const styles = StyleSheet.create({
-    taskTitle: {
-        fontSize:30,
-        fontWeight:"bold",
-        color:"black",
-    }
+  taskTitle: {
+      fontSize:30,
+      fontWeight:"bold",
+      color:"black",
+  },
+  buttonView: {
+    flexDirection:"row",
+    justifyContent:"space-between",
+  },
+  completedButton: {
+    backgroundColor:"green",
+    padding:10,
+    marginLeft:30,
+    width: 150,
+    borderRadius: 25,
+    alignItems: "center",
+    justifyContent: "center",
+    height:50,
+  },
+  editButton:{
+    backgroundColor:"yellow",
+    padding:10,
+    marginRight:30,
+    width: 150,
+    borderRadius: 25,
+    alignItems: "center",
+    justifyContent: "center",
+    height:50,
+  },
+  buttonText: {
+    fontSize:15,
+    fontWeight:"bold",
+  }
+
 })

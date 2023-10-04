@@ -12,13 +12,20 @@ import TaskScreen from './screens/TaskScreen';
 const Stack = createStackNavigator();
 const App = () => {
   const [tasks, setTasks] = useState([]);
+  const [completedTasks, setCompletedTasks] = useState([]);
   const [task, setTask] = useState('');
+  const [completedTask, setCompletedTask] = useState('')
   const [duration, setDuration] = useState(0);
 
   const addTask = (newTask) => {
-    setTasks([...tasks, { id: Date.now().toString(), value:task , dur:duration }]);
+    setTasks([...tasks, { id: Date.now(), date_added: Date("MM-DD-YYYY"), value:task , dur:duration }]);
     setTask('');
   };
+
+  const addCompletedTask = (newTask) => {
+    setCompletedTasks([...completedTasks, { id: Date.now(), date_completed: Date("MM-DD-YYYY"), value: task, dur:duration}])
+    setCompletedTask('')
+  }
 
   const removeTask = (taskId) => {
     setTasks(tasks.filter((t) => t.id !== taskId))
@@ -30,6 +37,8 @@ const App = () => {
     removeTask,
     setTask,
     setDuration,
+    setCompletedTask,
+    setCompletedTasks
   };
 
   return (

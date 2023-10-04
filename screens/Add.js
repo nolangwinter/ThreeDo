@@ -8,7 +8,7 @@ const Add = ({navigation}) => {
   return (
     <View>
       <Text style={styles.label}>Add Task</Text>
-      <View style={{flexDirection:"row"}}>
+      <View style={{flexDirection:"row", justifyContent:"space-between"}}>
         <TextInput
               placeholder={(context.tasks.length == 0) ? "Add your first task" : "Add another task"}
               style={styles.input}
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
 
     },
     input: {
-        width:"70%",
+        width:"65%",
         borderColor: 'black',
         borderWidth: 1,
         padding: 20,
@@ -63,7 +63,8 @@ const styles = StyleSheet.create({
       borderWidth:1,
       padding:10,
       fontSize:16,
-      marginBottom:10
+      marginBottom:10,
+      marginLeft:5,
     },
     button: {
       backgroundColor: "#81b0ff",
