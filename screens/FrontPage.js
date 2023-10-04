@@ -28,7 +28,7 @@ const Home = ({navigation}) => {
             </View>
         </View>
       <FlatList
-        data={context.tasks}
+        data={isEnabled ? context.completedTasks : context.tasks}
         renderItem={({ item }) => (
             <Pressable onPress={() => { (navigation.navigate("Task", {item: item} ))}}>
                 <TaskDisplay task={ item }/>

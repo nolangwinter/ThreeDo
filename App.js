@@ -14,7 +14,6 @@ const App = () => {
   const [tasks, setTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
   const [task, setTask] = useState('');
-  const [completedTask, setCompletedTask] = useState('')
   const [duration, setDuration] = useState(0);
 
   const addTask = (newTask) => {
@@ -22,10 +21,10 @@ const App = () => {
     setTask('');
   };
 
-  const addCompletedTask = (newTask) => {
-    setCompletedTasks([...completedTasks, { id: Date.now(), date_completed: Date("MM-DD-YYYY"), value: task, dur:duration}]);
-    setCompletedTask('');
-    removeTask(newTask.id);
+  const addCompletedTask = (task) => {
+    completedTask = task
+    setCompletedTasks([...completedTasks, { id: Date.now(), date_completed: Date("MM-DD-YYYY"), value: completedTask.value, dur:duration}]);
+    removeTask(task.id);
   }
 
   const removeTask = (taskId) => {
@@ -34,11 +33,11 @@ const App = () => {
 
   const contextValue = {
     tasks,
+    completedTasks,
     addTask,
     removeTask,
     setTask,
     setDuration,
-    setCompletedTask,
     setCompletedTasks,
     addCompletedTask
   };
