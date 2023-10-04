@@ -23,8 +23,9 @@ const App = () => {
   };
 
   const addCompletedTask = (newTask) => {
-    setCompletedTasks([...completedTasks, { id: Date.now(), date_completed: Date("MM-DD-YYYY"), value: task, dur:duration}])
-    setCompletedTask('')
+    setCompletedTasks([...completedTasks, { id: Date.now(), date_completed: Date("MM-DD-YYYY"), value: task, dur:duration}]);
+    setCompletedTask('');
+    removeTask(newTask.id);
   }
 
   const removeTask = (taskId) => {
@@ -38,7 +39,8 @@ const App = () => {
     setTask,
     setDuration,
     setCompletedTask,
-    setCompletedTasks
+    setCompletedTasks,
+    addCompletedTask
   };
 
   return (

@@ -1,7 +1,9 @@
 import { StyleSheet, Text, View, SafeAreaView, Pressable } from 'react-native'
-import React from 'react'
+import React, {useContext} from 'react'
+import AppContext from '../AppContext'
 
 const TaskScreen = ({route, navigation}) => {
+    const context = useContext(AppContext);
     const item = route.params;
     console.log(item);
   return (
@@ -15,7 +17,7 @@ const TaskScreen = ({route, navigation}) => {
       <View style={{height:200}}/>
 
       <View style={styles.buttonView}>
-        <Pressable style={styles.completedButton}>
+        <Pressable onPress={() => {context.addCompletedTask(item.item); navigation.goBack()}} style={styles.completedButton}>
           <Text style={styles.buttonText}>
             Completed
           </Text>
