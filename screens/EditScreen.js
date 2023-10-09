@@ -7,37 +7,43 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 const EditScreen = ({navigation}) => {
     const context =  useContext(AppContext);
     const route = useRoute();
-    const [editedTask, setEditedTask] = useState('');
+    const [editedTask, setEditedTask] = useState(route.params.item.item.value);
+    const [editedDur, setEditedDur] = useState(route.params.item.item.dur);
 
-    const editTaskValue = () => {
-        console.log("before the change");
-        console.log(context.tasks);
-        // route.params.item.item.value = editedTask
-        // fullEditedTask = route.params.item.item
-        // console.log(fullEditedTask);
+    const editFullTask = () => {
         taskEdited = context.tasks.map((task) => {
+            updatedTask = null;
             if (task.id === route.params.item.item.id) {
-                return {...task, value: editedTask}
+                updatedTask = {... task, value: editedTask, dur: editedDur}
+                console.log(updatedTask);
+                return {... task, value: editedTask, dur: editedDur}
             }
             return task;
         })
-        console.log(taskEdited);
         context.setTasks(taskEdited);
-        
     }
     return (
     <View>
         <View>
-            <Text>{route.params.item.item.value}</Text>
+            <TextInput
+                clearTextOnFocus= {true}
+                defaultValuer={editedTask}
+                onChangeText={setEditedTask}
+                value={editedTask}
+                style={styles.input}
+            />
         </View>
 
-        <TextInput
-            placeholder={route.params.item.item.value}
-            onChangeText={setEditedTask}
-            value={editedTask}
-            style={styles.input}
-        />
-        <Pressable style={styles.button} onPress={() => {editTaskValue(); navigation.navigate("Task", {item: item} )}}>
+        <View>
+            <TextInput
+                placeholder={route.params.item.item.dur}
+                onChangeText={setEditedDur}
+                value={editedDur}
+                style={styles.input}
+            />
+        </View>
+
+        <Pressable style={styles.button} onPress={() => {editFullTask(); navigation.navigate("Task", {item: updatedTask})}}>
             <Text style={styles.buttonText}>edit</Text>
         </Pressable>
     </View>

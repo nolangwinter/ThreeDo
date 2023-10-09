@@ -5,7 +5,6 @@ import AppContext from '../AppContext'
 const TaskScreen = ({route, navigation}) => {
     const context = useContext(AppContext);
     const item = route.params;
-    console.log(item);
   return (
     <SafeAreaView>
       <View style={{alignItems:"center"}}>
