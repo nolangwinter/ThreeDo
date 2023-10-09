@@ -5,27 +5,56 @@ import AppContext from '../AppContext'
 const TaskScreen = ({route, navigation}) => {
     const context = useContext(AppContext);
     const item = route.params;
+
+    const completeTask = (ctask) => {
+      date = new Date();
+      taskCompleted = context.tasks.map((task) => {
+        if (task.id === ctask.id) {
+          return {...task, date_completed: date.toLocaleDateString()};
+        }
+        return task;
+      })
+      context.setTasks(taskCompleted);
+    }
+
+    const dateCompl = () => {
+      if (item.item.date_completed !== null) {
+        return (
+          <Text style={styles.taskTitle}>Date Compl.: {item.item.date_completed}</Text>
+        )
+      }
+    }
+
+    const buttons = () => {
+      if (item.item.date_completed === null ) {
+        return (
+          <View style={styles.buttonView}>
+            <Pressable onPress={() => {completeTask(item.item); navigation.goBack()}} style={styles.completedButton}>
+              <Text style={styles.buttonText}>
+                Complete
+              </Text>
+            </Pressable>
+            <Pressable onPress={() => navigation.navigate("Edit", {item: item})} style={styles.editButton}>
+              <Text style={styles.buttonText}>
+                Edit
+              </Text>
+            </Pressable>
+          </View>
+        )
+      }
+    }
   return (
     <SafeAreaView>
       <View style={{alignItems:"center"}}>
         <Text style={styles.taskTitle}>{item.item.value}</Text>
         <Text style={styles.taskTitle}>Duration: {item.item.dur}</Text>
-        <Text>Date Added: {item.item.date_added}</Text>
+        <Text style={styles.taskTitle}>Date Added: {item.item.date_added}</Text>
+        {dateCompl()}
       </View>
 
       <View style={{height:200}}/>
-
-      <View style={styles.buttonView}>
-        <Pressable onPress={() => {context.addCompletedTask(item.item); navigation.goBack()}} style={styles.completedButton}>
-          <Text style={styles.buttonText}>
-            Completed
-          </Text>
-        </Pressable>
-        <Pressable onPress={() => navigation.navigate("Edit", {item: item})} style={styles.editButton}>
-          <Text style={styles.buttonText}>
-            Edit
-          </Text>
-        </Pressable>
+      <View>
+        {buttons()}
       </View>
     </SafeAreaView>
   )

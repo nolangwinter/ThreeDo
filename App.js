@@ -13,20 +13,14 @@ import EditScreen from './screens/EditScreen';
 const Stack = createStackNavigator();
 const App = () => {
   const [tasks, setTasks] = useState([]);
-  const [completedTasks, setCompletedTasks] = useState([]);
   const [task, setTask] = useState('');
   const [duration, setDuration] = useState(0);
 
   const addTask = (newTask) => {
-    setTasks([...tasks, { id: Date.now(), date_added: Date("MM-DD-YYYY"), value:task , dur:duration }]);
+    const date = new Date();
+    setTasks([...tasks, { id: Date.now(), date_added: date.toLocaleDateString(), value:task, dur:duration, date_completed:null }]);
     setTask('');
   };
-
-  const addCompletedTask = (task) => {
-    completedTask = task
-    setCompletedTasks([...completedTasks, { id: Date.now(), date_completed: Date("MM-DD-YYYY"), value: completedTask.value, dur:duration}]);
-    removeTask(task.id);
-  }
 
   const removeTask = (taskId) => {
     setTasks(tasks.filter((t) => t.id !== taskId))
@@ -34,14 +28,11 @@ const App = () => {
 
   const contextValue = {
     tasks,
-    completedTasks,
     addTask,
     removeTask,
     setTask,
     setTasks,
     setDuration,
-    setCompletedTasks,
-    addCompletedTask
   };
 
   return (

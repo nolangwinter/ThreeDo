@@ -14,7 +14,6 @@ const Home = ({navigation}) => {
                 <Pressable style={styles.addTaskButton} onPress={() => {navigation.navigate("Add")}}>
                     <Text>Add Task</Text>
                 </Pressable>
-                {/* <Button title="Add Task" onPress={() => {navigation.navigate("Add")}} /> */}
             </View>
             <View style={styles.container}>
                 <Text style={styles.completed}>Show Completed</Text>
@@ -27,8 +26,13 @@ const Home = ({navigation}) => {
                 />
             </View>
         </View>
+        <View style={{ justifyContent:"space-between", flexDirection:"row"}}>
+            <Text style={styles.taskKey}>Task</Text>
+            <Text style={styles.taskKey}>Duration</Text>
+            <Text style={styles.taskKey}>{isEnabled ? "Date Compl.": "Date Added" }</Text>
+        </View>
       <FlatList
-        data={isEnabled ? context.completedTasks : context.tasks}
+        data={isEnabled ? context.tasks : context.tasks.filter((task) => {task.date_completed === null})}
         renderItem={({ item }) => (
             <Pressable onPress={() => { (navigation.navigate("Task", {item: item} ))}}>
                 <TaskDisplay task={ item }/>
@@ -95,5 +99,10 @@ const styles = StyleSheet.create({
         marginVertical:10,
         borderColor: "#C0C0C0",
         borderWidth: 0.8
+      },
+      taskKey: {
+        fontSize:16,
+        marginHorizontal:10,
+        fontWeight:"500"
       }
 });

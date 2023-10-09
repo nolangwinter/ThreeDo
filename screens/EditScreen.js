@@ -14,8 +14,7 @@ const EditScreen = ({navigation}) => {
         taskEdited = context.tasks.map((task) => {
             updatedTask = null;
             if (task.id === route.params.item.item.id) {
-                updatedTask = {... task, value: editedTask, dur: editedDur}
-                console.log(updatedTask);
+                updatedTask = {... task, value: editedTask, dur: editedDur};
                 return {... task, value: editedTask, dur: editedDur}
             }
             return task;
@@ -36,7 +35,8 @@ const EditScreen = ({navigation}) => {
 
         <View>
             <TextInput
-                placeholder={route.params.item.item.dur}
+                clearTextOnFocus={true}
+                defaultValue={editedDur}
                 onChangeText={setEditedDur}
                 value={editedDur}
                 style={styles.input}
