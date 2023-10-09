@@ -8,6 +8,7 @@ import Add from './screens/Add';
 import { NavigationContainer } from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import TaskScreen from './screens/TaskScreen';
+import EditScreen from './screens/EditScreen';
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
     addTask,
     removeTask,
     setTask,
+    setTasks,
     setDuration,
     setCompletedTasks,
     addCompletedTask
@@ -49,6 +51,7 @@ const App = () => {
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Add" component={Add}/>
           <Stack.Screen name="Task" component={TaskScreen} />
+          <Stack.Screen name="Edit" component={EditScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </AppContext.Provider>

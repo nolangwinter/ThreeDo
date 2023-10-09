@@ -22,7 +22,7 @@ const TaskScreen = ({route, navigation}) => {
             Completed
           </Text>
         </Pressable>
-        <Pressable style={styles.editButton}>
+        <Pressable onPress={() => navigation.navigate("Edit", {item: item})} style={styles.editButton}>
           <Text style={styles.buttonText}>
             Edit
           </Text>
