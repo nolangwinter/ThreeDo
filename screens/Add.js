@@ -6,9 +6,9 @@ import { TextInput } from 'react-native-gesture-handler';
 const Add = ({navigation}) => {
     const context = useContext(AppContext);
   return (
-    <View>
+    <View style={{flex:1}}>
       <Text style={styles.label}>Add Task</Text>
-      <View style={{flexDirection:"row", justifyContent:"space-between"}}>
+      <View style={{flexDirection:"column", justifyContent:"center", alignItems:"center", marginVertical:10}}>
         <TextInput
               placeholder={(context.tasks.length == 0) ? "Add your first task" : "Add another task"}
               style={styles.input}
@@ -23,12 +23,16 @@ const Add = ({navigation}) => {
         />
 
       </View>
-      <Pressable style={styles.button} onPress={() => {context.addTask(context.task); navigation.goBack()}}>
+
+      <View style={{position:'absolute', bottom:50, marginLeft:120}}>
+      <Pressable style={styles.addButton} onPress={() => {context.addTask(context.task); navigation.goBack()}}>
         <Text style={styles.buttonText}>Add</Text>
       </Pressable>
-      <Pressable style={styles.button} onPress={() => {navigation.goBack()}}>
+      <Pressable style={styles.canButton} onPress={() => {navigation.goBack()}}>
         <Text style={styles.buttonText}>Cancel</Text>
       </Pressable>
+      </View>
+
     </View>
   )
 }
@@ -50,24 +54,39 @@ const styles = StyleSheet.create({
 
     },
     input: {
-        width:"65%",
+        width:"95%",
         borderColor: 'black',
         borderWidth: 1,
         padding: 20,
-        fontSize:16,
+        fontSize:18,
         marginBottom:10,
     },
     durInput: {
-      width:"100%",
+      width:"40%",
       borderColor:"black",
       borderWidth:1,
+      height:60,
       padding:10,
-      fontSize:16,
-      marginBottom:10,
-      marginLeft:5,
+      fontSize:18,
+      marginTop:10
     },
-    button: {
+    addButton: {
       backgroundColor: "#81b0ff",
+      padding:10,
+      marginLeft: "auto",
+      marginRight: "auto",
+      width: 150,
+      borderRadius: 25,
+      alignItems: "center",
+      justifyContent: "center",
+      flexDirection: "row",
+      alignItems: "center",
+      marginVertical:10,
+      borderColor: "#C0C0C0",
+      borderWidth: 0.8
+    },
+    canButton: {
+      backgroundColor: "#ff3333",
       padding:10,
       marginLeft: "auto",
       marginRight: "auto",

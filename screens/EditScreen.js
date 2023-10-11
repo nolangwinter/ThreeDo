@@ -23,8 +23,8 @@ const EditScreen = ({navigation}) => {
     }
     return (
     <View>
-        <View style={{flexDirection:"row", marginTop:20}}>
-            <Text style={styles.taskTitle}>Task:</Text>
+        <View style={{flexDirection:"column", justifyContent:"center", alignItems:"center", marginVertical:10}}>
+
             <TextInput
                 // clearTextOnFocus= {true}
                 clearButtonMode="always"
@@ -33,10 +33,7 @@ const EditScreen = ({navigation}) => {
                 value={editedTask}
                 style={styles.taskInput}
             />
-        </View>
 
-        <View style={{flexDirection:"row", marginTop:20}}>
-            <Text style={styles.durTitle}>Duration:</Text>
             <TextInput
                 // clearTextOnFocus={true}
                 clearButtonMode="always"
@@ -47,7 +44,7 @@ const EditScreen = ({navigation}) => {
             />
         </View>
 
-        <View style={{height:450}}/>
+        <View style={{height:420}}/>
 
         <Pressable style={styles.button} onPress={() => {editFullTask(); navigation.navigate("Task", {item: updatedTask})}}>
             <Text style={styles.buttonText}>Edit</Text>
@@ -60,20 +57,21 @@ export default EditScreen
 
 const styles = StyleSheet.create({
     taskInput: {
-        width:"60%",
+        width:"95%",
         borderColor: 'black',
         borderWidth: 1,
         padding: 20,
-        fontSize:16,
+        fontSize:18,
         marginBottom:10,
     },
     durInput: {
         width:"30%",
-        borderColor: 'black',
-        borderWidth: 1,
-        padding: 20,
-        fontSize:16,
-        marginBottom:10,
+        borderColor:"black",
+        borderWidth:1,
+        height:60,
+        padding:10,
+        fontSize:18,
+        marginTop:10
     },
     button: {
         backgroundColor: "#81b0ff",
