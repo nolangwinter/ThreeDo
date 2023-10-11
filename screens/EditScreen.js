@@ -23,28 +23,34 @@ const EditScreen = ({navigation}) => {
     }
     return (
     <View>
-        <View>
+        <View style={{flexDirection:"row", marginTop:20}}>
+            <Text style={styles.taskTitle}>Task:</Text>
             <TextInput
-                clearTextOnFocus= {true}
+                // clearTextOnFocus= {true}
+                clearButtonMode="always"
                 defaultValuer={editedTask}
                 onChangeText={setEditedTask}
                 value={editedTask}
-                style={styles.input}
+                style={styles.taskInput}
             />
         </View>
 
-        <View>
+        <View style={{flexDirection:"row", marginTop:20}}>
+            <Text style={styles.durTitle}>Duration:</Text>
             <TextInput
-                clearTextOnFocus={true}
+                // clearTextOnFocus={true}
+                clearButtonMode="always"
                 defaultValue={editedDur}
                 onChangeText={setEditedDur}
                 value={editedDur}
-                style={styles.input}
+                style={styles.durInput}
             />
         </View>
 
+        <View style={{height:450}}/>
+
         <Pressable style={styles.button} onPress={() => {editFullTask(); navigation.navigate("Task", {item: updatedTask})}}>
-            <Text style={styles.buttonText}>edit</Text>
+            <Text style={styles.buttonText}>Edit</Text>
         </Pressable>
     </View>
     )
@@ -53,8 +59,16 @@ const EditScreen = ({navigation}) => {
 export default EditScreen
 
 const styles = StyleSheet.create({
-    input: {
-        width:"65%",
+    taskInput: {
+        width:"60%",
+        borderColor: 'black',
+        borderWidth: 1,
+        padding: 20,
+        fontSize:16,
+        marginBottom:10,
+    },
+    durInput: {
+        width:"30%",
         borderColor: 'black',
         borderWidth: 1,
         padding: 20,
@@ -75,8 +89,21 @@ const styles = StyleSheet.create({
         marginVertical:10,
         borderColor: "#C0C0C0",
         borderWidth: 0.8
+    },
+    buttonText: {
+        fontSize:22
+    },
+    taskTitle: {
+        fontSize:30,
+        marginRight:60,
+        marginLeft:10,
+        marginTop:8
+    },
+    durTitle: {
+        fontSize:30,
+        marginRight:10,
+        marginLeft:10,
+        marginTop:8
       },
-      buttonText: {
-        fontSize:20
-      }
+    
 })

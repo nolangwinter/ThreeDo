@@ -18,11 +18,13 @@ const TaskDisplay = ({ task, navigation }) => {
     const xOrCheck = () => {
         if (task.date_completed === null) {
             return (
-                <Button title="X" onPress={() => context.removeTask(task.id)} />
+                <Pressable onPress={() => context.removeTask(task.id)}>
+                    <Text style={styles.deleteButton}>X</Text>
+                </Pressable>
             )
         } else {
             return (
-                <AntDesign name="check" size={24} color="blue" />
+                <AntDesign name="check" size={24} color="green" />
             )
         }
     }
@@ -48,8 +50,8 @@ export default TaskDisplay
 
 const styles = StyleSheet.create({
     taskVal: {
-        color:"green",
-        fontSize:16,
+        color:"black",
+        fontSize:18,
         fontWeight:"bold",
         width:'70%'
     },
@@ -59,7 +61,7 @@ const styles = StyleSheet.create({
         fontWeight:"bold",  
     },
     durStyle: {
-        color:"green",
+        color:"black",
         fontSize:18,
         fontWeight:"bold",
         width:'10%' 
@@ -69,4 +71,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
     },
+    deleteButton: {
+        color:"red",
+        fontSize:22,
+        marginRight:5
+    }
 })

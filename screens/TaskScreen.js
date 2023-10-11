@@ -20,7 +20,7 @@ const TaskScreen = ({route, navigation}) => {
     const dateCompl = () => {
       if (item.item.date_completed !== null) {
         return (
-          <Text style={styles.taskTitle}>Date Compl.: {item.item.date_completed}</Text>
+          <Text style={styles.taskDate}>Date Completed: {item.item.date_completed}</Text>
         )
       }
     }
@@ -34,6 +34,7 @@ const TaskScreen = ({route, navigation}) => {
                 Complete
               </Text>
             </Pressable>
+            <View style={{width:40}} />
             <Pressable onPress={() => navigation.navigate("Edit", {item: item})} style={styles.editButton}>
               <Text style={styles.buttonText}>
                 Edit
@@ -44,18 +45,16 @@ const TaskScreen = ({route, navigation}) => {
       }
     }
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex:1}}>
       <View style={{alignItems:"center"}}>
         <Text style={styles.taskTitle}>{item.item.value}</Text>
-        <Text style={styles.taskTitle}>Duration: {item.item.dur}</Text>
-        <Text style={styles.taskTitle}>Date Added: {item.item.date_added}</Text>
+        <Text style={styles.taskDur}>Duration: {item.item.dur}</Text>
+        <Text style={styles.taskDate}>Date Added: {item.item.date_added}</Text>
         {dateCompl()}
       </View>
 
-      <View style={{height:200}}/>
-      <View>
         {buttons()}
-      </View>
+
     </SafeAreaView>
   )
 }
@@ -67,10 +66,25 @@ const styles = StyleSheet.create({
       fontSize:30,
       fontWeight:"bold",
       color:"black",
+      marginTop:20
   },
+  taskDur: {
+    fontSize:25,
+    fontWeight:"bold",
+    color:"black",
+    marginTop:20
+},
+taskDate: {
+  fontSize:20,
+  fontWeight:"bold",
+  color:"black",
+  marginTop:20
+},
   buttonView: {
     flexDirection:"row",
     justifyContent:"space-between",
+    position:"absolute",
+    bottom:50
   },
   completedButton: {
     backgroundColor:"#5cd65c",
@@ -85,7 +99,7 @@ const styles = StyleSheet.create({
   editButton:{
     backgroundColor:"#f5dd4b",
     padding:10,
-    marginRight:30,
+    marginRight:10,
     width: 150,
     borderRadius: 25,
     alignItems: "center",
