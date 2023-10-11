@@ -4,10 +4,14 @@ import AppContext from '../AppContext'
 import TaskDisplay from '../components/TaskDisplay';
 
 const Home = ({navigation}) => {
-  const context = React.useContext(AppContext);
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-  return (
+    const context = React.useContext(AppContext);
+    const [isEnabled, setIsEnabled] = useState(false);
+
+    const toggleSwitch = () => {
+        setIsEnabled(previousState => !previousState);
+    }
+
+    return (
     <SafeAreaView style={styles.screen}>
         <View style={styles.toggle}>
             <View style={styles.inputContainer}>
@@ -31,8 +35,8 @@ const Home = ({navigation}) => {
             <Text style={styles.taskKey}>Duration</Text>
             <Text style={styles.taskKey}>{isEnabled ? "Date Compl.": "Date Added" }</Text>
         </View>
-      <FlatList
-        data={isEnabled ? context.tasks : context.tasks.filter((task) => {task.date_completed === null})}
+        <FlatList
+        data={isEnabled ? context.tasks : context.tasks.filter((t) => t.date_completed === null)}
         renderItem={({ item }) => (
             <Pressable onPress={() => { (navigation.navigate("Task", {item: item} ))}}>
                 <TaskDisplay task={ item }/>
@@ -41,7 +45,7 @@ const Home = ({navigation}) => {
         keyExtractor={(item) => item.id}
     />
     </SafeAreaView>
-  )
+    )
 }
 
 export default Home

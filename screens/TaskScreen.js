@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     justifyContent:"space-between",
   },
   completedButton: {
-    backgroundColor:"green",
+    backgroundColor:"#5cd65c",
     padding:10,
     marginLeft:30,
     width: 150,
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     height:50,
   },
   editButton:{
-    backgroundColor:"yellow",
+    backgroundColor:"#f5dd4b",
     padding:10,
     marginRight:30,
     width: 150,
