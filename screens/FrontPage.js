@@ -30,11 +30,6 @@ const Home = ({navigation}) => {
                 />
             </View>
         </View>
-        <View style={{ justifyContent:"space-between", flexDirection:"row"}}>
-            <Text style={styles.taskKey}>Task</Text>
-            <Text style={styles.taskKey}>Duration</Text>
-            <Text style={styles.taskKey}>{isEnabled ? "Date Compl.": "Date Added" }</Text>
-        </View>
         <FlatList
         data={isEnabled ? context.tasks : context.tasks.filter((t) => t.date_completed === null)}
         renderItem={({ item }) => (
@@ -89,7 +84,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flexDirection:"row"
       },
-      addTaskButton: {
+    addTaskButton: {
         backgroundColor: "#81b0ff",
         padding:10,
         marginLeft: "auto",
@@ -107,6 +102,13 @@ const styles = StyleSheet.create({
       taskKey: {
         fontSize:16,
         marginHorizontal:10,
-        fontWeight:"500"
+        fontWeight:"500",
+        padding:2
+      },
+      addedCompl: {
+        fontSize:16,
+        marginHorizontal:10,
+        fontWeight:"500",
+        padding:2
       }
 });
