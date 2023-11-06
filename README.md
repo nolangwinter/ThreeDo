@@ -82,10 +82,8 @@ React Native and Expo
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+![addTask](https://github.com/nolangwinter/ThreeDo/assets/60360677/be91fc4f-bc90-4553-bbba-c2473071da45)
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-![allTaskHomeScreen](https://github.com/nolangwinter/ThreeDo/assets/60360677/942a4dcc-aa49-4f01-9108-4743f8dfea4b)
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
