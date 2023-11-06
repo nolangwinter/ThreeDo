@@ -81,8 +81,8 @@ React Native and Expo
 
 
 <!-- USAGE EXAMPLES -->
-## Usage                                                                    Adding / Editing Tasks
-### Home Screen
+## Usage                                                                   
+### Home Screen                                                             Adding / Editing Tasks
 ![allTaskHomeScreen](https://github.com/nolangwinter/ThreeDo/assets/60360677/2e20f91a-d8d2-45fd-9d3a-7c399fbdd32a)   ![addTask](https://github.com/nolangwinter/ThreeDo/assets/60360677/7ebd85b8-7ba9-41d1-8ab1-8227e2a3cbc0)   ![editTask](https://github.com/nolangwinter/ThreeDo/assets/60360677/fd4b58e8-8295-4d9a-a919-592b3edd9421)
 
 
