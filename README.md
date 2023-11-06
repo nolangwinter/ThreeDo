@@ -43,8 +43,7 @@ ToDo Mobile app that allows you to create tasks, edit tasks and complete tasks.
 
 ### Built With
 
-React Native
-Expo
+React Native and Expo
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -85,7 +84,7 @@ Expo
 ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
+![allTaskHomeScreen](https://github.com/nolangwinter/ThreeDo/assets/60360677/942a4dcc-aa49-4f01-9108-4743f8dfea4b)
 _For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
